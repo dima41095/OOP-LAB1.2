@@ -9,7 +9,7 @@
 #include <cmath>
 #include <algorithm>
 
-// ==================== Узел дерева выражения ====================
+
 template <typename T>
 class Node {
 public:
@@ -24,7 +24,7 @@ public:
     virtual T constValue() const = 0;
 };
 
-// ==================== Числовая константа ====================
+
 template <typename T>
 class ConstNode : public Node<T> {
     T value_;
@@ -46,7 +46,7 @@ public:
     T constValue() const override { return value_; }
 };
 
-// ==================== Именованная переменная ====================
+
 template <typename T>
 class VarNode : public Node<T> {
     std::string name_;
@@ -70,7 +70,7 @@ public:
     }
 };
 
-// ==================== Бинарная операция ====================
+
 template <typename T>
 class BinaryNode : public Node<T> {
 public:
@@ -135,7 +135,7 @@ public:
     }
 };
 
-// ==================== Фабричные функции ====================
+
 template <typename T>
 std::shared_ptr<Node<T>> makeConst(T v) {
     return std::make_shared<ConstNode<T>>(v);
@@ -166,7 +166,7 @@ std::shared_ptr<Node<T>> makeDiv(std::shared_ptr<Node<T>> l, std::shared_ptr<Nod
     return std::make_shared<BinaryNode<T>>(BinaryNode<T>::Op::Div, l, r);
 }
 
-// ==================== Демонстрация ====================
+
 template <typename T>
 void demo(const std::string& title, const std::shared_ptr<Node<T>>& expr,
     const std::vector<std::pair<std::string, T>>& vars) {
@@ -190,7 +190,7 @@ void demo(const std::string& title, const std::shared_ptr<Node<T>>& expr,
     std::cout << "Упрощённое выражение: " << simplified->str() << "\n";
 }
 
-// ==================== Интерактивная демонстрация ====================
+
 template <typename T>
 void interactive(const std::shared_ptr<Node<T>>& expr, const std::string& title) {
     std::cout << "\n=== Ручная демонстрация: " << title << " ===\n";
@@ -240,7 +240,7 @@ void interactive(const std::shared_ptr<Node<T>>& expr, const std::string& title)
     }
 }
 
-// ==================== Тесты ====================
+
 int main() {
     std::setlocale(LC_ALL, "Russian");
 
