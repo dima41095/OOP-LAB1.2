@@ -180,6 +180,10 @@ void demo(const std::string& title, const std::shared_ptr<Node<T>>& expr,
     for (const auto& v : used) std::cout << v << " ";
     std::cout << "\n";
     if (!vars.empty()) {
+        std::cout << "Значения переменных: ";
+        for (const auto& p : vars)
+            std::cout << p.first << "=" << p.second << " ";
+        std::cout << "\n";
         std::cout << "Значение: " << expr->eval(vars) << "\n";
     }
     auto simplified = expr->simplify();
